@@ -131,9 +131,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 deserialize_json des=new deserialize_json();
                 try
                 {
-                    for(int x=0;x<lstlongitud.size()-1;x++)
+                    for(int x=0;x<lstlongitud.size();x++)
                     {
-                        String url="https://maps.googleapis.com/maps/api/distancematrix/json?destinations="+lstlongitud.get(x+1).latitude+", "+lstlongitud.get(x+1).longitude+"&origins="+lstlongitud.get(x).latitude+", "+lstlongitud.get(x).longitude+"&units=meters&key=AIzaSyAZmpF3k0bcm-3c-f_0feLZQZRwYu-gdr0";
+                        String url="";
+                        if(x+1<lstlongitud.size())
+                            url="https://maps.googleapis.com/maps/api/distancematrix/json?destinations="+lstlongitud.get(x+1).latitude+", "+lstlongitud.get(x+1).longitude+"&origins="+lstlongitud.get(x).latitude+", "+lstlongitud.get(x).longitude+"&units=meters&key=AIzaSyAZmpF3k0bcm-3c-f_0feLZQZRwYu-gdr0";
+                        else
+                            url="https://maps.googleapis.com/maps/api/distancematrix/json?destinations="+lstlongitud.get(0).latitude+", "+lstlongitud.get(0).longitude+"&origins="+lstlongitud.get(x).latitude+", "+lstlongitud.get(x).longitude+"&units=meters&key=AIzaSyAZmpF3k0bcm-3c-f_0feLZQZRwYu-gdr0";
+
                         Log.i("responseData", url);
                         request_response_user.get_request_volley(url);
                         while (request_response_user.getResponse()=="")

@@ -28,7 +28,7 @@ public class deserialize_json {
                     getJSONObject(0).
                     getJSONArray("elements").
                     getJSONObject(0).
-                    getJSONObject("distance").getString("value");
+                    getJSONObject("distance").getString("text");
                     Log.i("distancepepilla",distance);
                     Pattern p =Pattern.compile("[\\d.]+");
                     Matcher m=p.matcher(distance);
